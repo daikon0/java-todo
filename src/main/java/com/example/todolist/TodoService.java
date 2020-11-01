@@ -48,4 +48,8 @@ public class TodoService {
     TodoEntity todoEntity = findTodoById(todoId);
     todoRepository.delete(todoEntity);
   }
+
+  public  List<TodoEntity> findTodoByTitle(String searchWord) {
+    return todoRepository.findByTitleContaining(searchWord);
+  }
 }

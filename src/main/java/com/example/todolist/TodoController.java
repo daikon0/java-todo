@@ -51,4 +51,16 @@ public class TodoController {
     todoService.deleteTodo(todoId);
     return "redirect:/";
   }
+
+  @GetMapping("/search")
+  public String search() {
+    return "search";
+  }
+
+  @GetMapping("/search/result")
+  public String searchResult(Model model, @ModelAttribute SearchForm searchForm) {
+    List<TodoEntity> searchList = todoService.findTodoByTitle(searchForm.getSearchWord());
+    model.addAttribute("searchResults", searchList);
+    return "search";
+  }
 }
