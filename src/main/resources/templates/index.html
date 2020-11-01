@@ -21,6 +21,17 @@
 
 <div th:each="todo: ${todoList}">
   <p th:text="${todo.title}"></p>
+  <form th:action="@{/update/{id}(id=${todo.id})}" method="POST">
+    <input type="text" name="title">
+    <button type="submit">submit</button>
+  </form>
+  <form th:action="@{/done/{id}(id=${todo.id})}" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <button type="submit">
+      <span th:if="${todo.status}">not doen</span>
+      <span th:unless="${todo.status}">done</span>
+    </button>
+  </form>
 </div>
 
 </body>
