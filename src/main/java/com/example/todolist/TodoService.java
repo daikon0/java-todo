@@ -16,4 +16,12 @@ public class TodoService {
   public List<TodoEntity> findAllTodo() {
     return todoRepository.findAll();
   }
+
+  public void setTodo(TodoForm formDate) {
+    TodoEntity todo = new TodoEntity();
+    todo.setTitle(formDate.getTitle());
+    todo.setDeadline(formDate.getDeadline());
+    todo.setStatus(false);
+    todoRepository.save(todo);
+  }
 }

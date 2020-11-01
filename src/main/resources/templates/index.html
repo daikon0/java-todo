@@ -2,11 +2,22 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>hello world</title>
+  <title>todo</title>
 </head>
 <body>
 
-<p>hello world</p>
+<h1>TODO</h1>
+
+<p>register</p>
+<form method="POST" th:action="@{/register}" th:object="${TodoForm}">
+  <label for="title">title</label>
+  <input id="title" type="text" name="title">
+
+  <label for="date">deadline</label>
+  <input id="date" type="date" name="deadline">
+
+  <button type="submit">submit</button>
+</form>
 
 <div th:each="todo: ${todoList}">
   <p th:text="${todo.title}"></p>
