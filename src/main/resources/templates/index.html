@@ -32,6 +32,10 @@
       <span th:unless="${todo.status}">done</span>
     </button>
   </form>
+  <form th:action="@{/delete/{id}(id=${todo.id})}" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">delete</button>
+  </form>
 </div>
 
 </body>
