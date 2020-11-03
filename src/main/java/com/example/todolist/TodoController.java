@@ -35,8 +35,8 @@ public class TodoController {
   }
 
   @PostMapping("/update/{id}")
-  public String update(@PathVariable("id") Long todoId, @RequestParam String title) {
-    todoService.updateTodo(todoId, title);
+  public String update(@PathVariable("id") Long todoId, @ModelAttribute TodoForm todoForm) {
+    todoService.updateTodo(todoForm);
     return "redirect:/";
   }
 

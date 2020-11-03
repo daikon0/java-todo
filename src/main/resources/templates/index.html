@@ -22,7 +22,11 @@
 <div th:each="todo: ${todoList}">
   <p th:text="${todo.title}"></p>
   <form th:action="@{/update/{id}(id=${todo.id})}" method="POST">
-    <input type="text" name="title">
+    <label for="title">title</label>
+    <input id="title" type="text" name="title">
+
+    <label for="date">deadline</label>
+    <input id="date" type="date" name="deadline">
     <button type="submit">submit</button>
   </form>
   <form th:action="@{/done/{id}(id=${todo.id})}" method="post">

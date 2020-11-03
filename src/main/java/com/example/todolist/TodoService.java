@@ -38,9 +38,10 @@ public class TodoService {
     todoRepository.save(todoEntity);
   }
 
-  public void updateTodo(long todoId, String title) {
-    TodoEntity todoEntity = findTodoById(todoId);
-    todoEntity.setTitle(title);
+  public void updateTodo(TodoForm todoForm) {
+    TodoEntity todoEntity = findTodoById(todoForm.getId());
+    todoEntity.setTitle(todoForm.getTitle());
+    todoEntity.setDeadline(todoForm.getDeadline());
     todoRepository.save(todoEntity);
   }
 
