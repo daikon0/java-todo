@@ -16,7 +16,7 @@ public class TodoService {
   private final TodoRepository todoRepository;
 
   public List<TodoEntity> findAllTodo() {
-    return todoRepository.findAll();
+    return todoRepository.findAllByOrderByCreateTimeDesc();
   }
 
   public void setTodo(TodoForm formDate) {
