@@ -1,6 +1,7 @@
 package com.example.todolist;
 
 import com.example.todolist.dao.TodoRepository;
+import com.example.todolist.exception.TodoNotFoundException;
 import com.example.todolist.dao.TodoEntity;
 
 import org.springframework.stereotype.Service;
@@ -29,6 +30,7 @@ public class TodoService {
 
   public TodoEntity findTodoById(long todoId) {
     Optional<TodoEntity> todoResult = todoRepository.findById(todoId);
+    todoResult.orElseThrow(TodoNotFoundException::new);
     return todoResult.get();
   }
 
