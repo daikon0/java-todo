@@ -16,4 +16,11 @@ public class TodoControllerAdvice {
     log.warn("指定されたTODOが見つかりません。");
     return "error/404.html";
   }
+
+  @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+  @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+  public String badMethod() {
+    log.warn("Bad Request");
+    return "error/405.html";
+  }
 }
